@@ -13,20 +13,26 @@ public class Mapper {
     public static UserDTO mapToUserDTO(User user){
         return new UserDTO(
                 user.getId(),
+                user.getFirstName(),
+                user.getLastName(),
                 user.getUsername(),
-                user.getPassword()
+                user.getPassword(),
+                user.getRole()
         );
     }
 
     public static User mapToUser(UserDTO userDto){
         return new User(
                 userDto.getId(),
+                userDto.getFirstName(),
+                userDto.getLastName(),
                 userDto.getUsername(),
-                userDto.getPassword()
+                userDto.getPassword(),
+                userDto.getRole()
         );
     }
 
-    public ContactDTO mapToContactDTO(Contact contact) {
+    public static ContactDTO mapToContactDTO(Contact contact) {
         return new ContactDTO(
                 contact.getId(),
                 contact.getName(),
@@ -36,7 +42,7 @@ public class Mapper {
         );
     }
 
-    public Contact mapToContact(ContactDTO contactDTO) {
+    public static Contact mapToContact(ContactDTO contactDTO) {
         return new Contact(
                 contactDTO.getId(),
                 contactDTO.getName(),

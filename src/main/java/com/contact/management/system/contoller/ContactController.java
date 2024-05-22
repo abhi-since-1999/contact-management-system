@@ -12,15 +12,11 @@ import java.util.List;
 import static java.util.Objects.isNull;
 
 @RestController
-@RequestMapping("/api/contact")
+@RequestMapping("/spring-security/management/contact")
 public class ContactController {
 
-    private final ContactService contactService;
-
     @Autowired
-    public ContactController(ContactService contactService) {
-        this.contactService = contactService;
-    }
+    private  ContactService contactService;
 
     @GetMapping
     public List<Contact> getAllContacts() {
@@ -48,6 +44,7 @@ public class ContactController {
         return updatedContact != null ? ResponseEntity.ok(updatedContact) : ResponseEntity.notFound().build();
     }
 
+    
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteContact(@PathVariable Long id) {
         return contactService.deleteContact(id) ?
