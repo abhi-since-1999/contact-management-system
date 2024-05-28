@@ -32,7 +32,6 @@ public class SecurityConfiguration {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req ->
-//                        req.requestMatchers("/api/contact/*")
                         req.requestMatchers("/spring-security/auth/*")
                                 .permitAll()
                                 .requestMatchers("/spring-security/management/**").hasAnyRole(ADMIN.name(), MEMBER.name())
@@ -43,16 +42,4 @@ public class SecurityConfiguration {
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
-//
-//    @Bean
-//    public SecurityFilterChain securityFilterChain1(HttpSecurity http) throws Exception {
-//        return http
-//                .csrf(AbstractHttpConfigurer::disable)
-//                .authorizeHttpRequests(req ->
-//                        req.requestMatchers("/api/contact/*")
-//                                .permitAll()
-//                                .anyRequest()
-//                                .authenticated())
-//                .build();
-//    }
 }
